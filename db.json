@@ -1,0 +1,41 @@
+{
+  "posts": [
+    {
+      "id": 0,
+      "title": "First post!",
+      "content": "My first content!"
+    },
+    {
+      "key1": "value1",
+      "key2": "value2",
+      "id": 1
+    },
+    {
+      "key1": "value1",
+      "key2": "value2",
+      "id": 2
+    },
+    {
+      "key1": "value1",
+      "key2": "value2",
+      "id": 3
+    },
+    {
+      "key1": "value1",
+      "key2": "value2",
+      "id": 4
+    },
+    {
+      "key1": "value1",
+      "key2": "value2",
+      "id": 5
+    }
+  ],
+  "comments": [
+    {
+      "id": 0,
+      "content": "Wow such content!",
+      "username": "zero_cool"
+    }
+  ]
+}
