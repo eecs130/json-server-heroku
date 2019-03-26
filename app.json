@@ -1,0 +1,7 @@
+{
+  "name": "EECS 130 Sample REST API",
+  "version": "1.0.0",
+  "description": "Simple json-base database to deploy to Heroku",
+  "repository": "https://github.com/eecs130/json-server-herokue",
+  "keywords": ["json-server,heroku, node, REST API"]
+}
