@@ -6,8 +6,9 @@
 
 * [**Create your database**](#create-your-database)
 * [Deploy to **Heroku**](#deploy-to-heroku)
-* [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
+* <a href="https://heroku.com/deploy?template=https://github.com/eecs130/json-server-heroku/tree/master">
+    <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
+</a>
 
 
 ## Create your database
