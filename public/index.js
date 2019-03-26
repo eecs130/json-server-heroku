@@ -1,4 +1,4 @@
-fetch('http://localhost:3000/db')
+fetch('/db')
     .then(response => {
         return response.json();
     })
