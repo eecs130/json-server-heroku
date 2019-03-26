@@ -1,4 +1,7 @@
 {
+    "scripts": {
+       "start" : "node server.js"
+   },
   "name": "json-server-heroku",
   "version": "1.0.0",
   "description": "Simple json-base database to deploy to Heroku",
