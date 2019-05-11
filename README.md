@@ -31,11 +31,7 @@ _this example will create `/posts` route , each resource will have `id`, `title`
 ```
 
 
-## Deploy to **Heroku**
-
-<a href="https://heroku.com/deploy?template=https://github.com/eecs130/json-server-heroku/tree/master">
-    <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
-</a>
+## Deploy to Heroku <a href="https://heroku.com/deploy?template=https://github.com/eecs130/json-server-heroku/tree/master"><img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy"></a>
 
 Heroku is a free hosting service for hosting small projects. Easy setup and deploy from the command line via _git_.
 
