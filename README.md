@@ -2,9 +2,8 @@
 
 > Instructions how to deploy the full fake REST API [json-server](https://github.com/typicode/json-server) to various free hosting sites. Should only be used in development purpose but can act as a simpler database for smaller applications.
 
-<img src="https://raw.githubusercontent.com/typicode/json-server/master/src/server/public/images/json.png" align="right">
 
-* [**Create your database**](#create-your-database)
+* [Create your database](#create-your-database)
 * [Deploy to Heroku](#deploy-to-heroku)
 
 
@@ -50,15 +49,14 @@ Heroku is a free hosting service for hosting small projects. Easy setup and depl
 * App has to sleep a couple of hours every day.
 * "Powers down" after 30 mins of inactivity. Starts back up when you visit the site but it takes a few extra seconds.
 
----
 
 ### Install Heroku
 
-1 . [Create your database](#create-your-database)
+1. [Create your database](#create-your-database)
 
-2 . Create an account on <br/>[https://heroku.com](https://heroku.com)
+2. Create an account on <br/>[https://heroku.com](https://heroku.com)
 
-3 . Install the Heroku CLI on your computer: <br/>[https://devcenter.heroku.com/articles/heroku-cli](https://devcenter.heroku.com/articles/heroku-cli)
+3. Install the Heroku CLI on your computer: <br/>[https://devcenter.heroku.com/articles/heroku-cli](https://devcenter.heroku.com/articles/heroku-cli)
 
 4 . Connect the Heroku CLI to your account by writing the following command in your terminal and follow the instructions on the command line:
 ```bash
@@ -85,7 +83,6 @@ heroku open
 heroku logs --tail
 ```
 
----
 
 #### How it works
 
