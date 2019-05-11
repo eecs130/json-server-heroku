@@ -5,10 +5,7 @@
 <img src="https://raw.githubusercontent.com/typicode/json-server/master/src/server/public/images/json.png" align="right">
 
 * [**Create your database**](#create-your-database)
-* [Deploy to **Heroku**](#deploy-to-heroku)
-* <a href="https://heroku.com/deploy?template=https://github.com/eecs130/json-server-heroku/tree/master">
-    <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
-</a>
+* [Deploy to Heroku](#deploy-to-heroku)
 
 
 ## Create your database
@@ -34,11 +31,12 @@ _this example will create `/posts` route , each resource will have `id`, `title`
 }
 ```
 
----
 
 ## Deploy to **Heroku**
 
-<img align="right" width="100px" height="auto" src="https://cdn.worldvectorlogo.com/logos/heroku.svg" alt="Heroku">
+<a href="https://heroku.com/deploy?template=https://github.com/eecs130/json-server-heroku/tree/master">
+    <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
+</a>
 
 Heroku is a free hosting service for hosting small projects. Easy setup and deploy from the command line via _git_.
 
@@ -47,10 +45,10 @@ Heroku is a free hosting service for hosting small projects. Easy setup and depl
 * Easy setup
 * Free
 
-###### Cons
+###### Cons (Free Version)
 
 * App has to sleep a couple of hours every day.
-* "Powers down" after 30 mins of inactivity. Starts back up when you visit the site but it takes a few extra seconds. Can maybe be solved with [**Kaffeine**](http://kaffeine.herokuapp.com/)
+* "Powers down" after 30 mins of inactivity. Starts back up when you visit the site but it takes a few extra seconds.
 
 ---
 
