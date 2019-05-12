@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: 'Open Sans', Helvetica, sans-serif;
-    background: #00a4cf;
+    background: rgba(0, 164, 207, 1);
     color: #444;
 }
 body * {
@@ -15,6 +15,9 @@ header {
     box-shadow: 6px 4px 8px 3px rgba(0, 0, 0, 0.25), 
         inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
+h1, h2 {
+    font-family: 'Roboto';
+}
 header h1 {
     color: white;
     margin: 0px;
@@ -26,6 +29,12 @@ header #add-new {
     float: right;
     margin-top: -46px;
     margin-right: 40px;
+    cursor: pointer;
+    color: white;
+    background: rgba(0, 164, 207, 1);
+}
+header #add-new:hover {
+    background: rgba(0, 164, 207, 0.8);
 }
 
 #container {
@@ -62,9 +71,9 @@ header #add-new {
     cursor: pointer;
 }
 .edit:hover, .delete:hover {
-    color: #00a4cf;
+    color: rgba(0, 164, 207, 1);
 }
-#container label {
+#container label, .add-new-panel label {
     width: 100px;
     display: inline-block;
     text-align: right;
@@ -72,12 +81,12 @@ header #add-new {
     color: #777;
     font-weight: 300;
 }
-#container input {
+#container input, .add-new-panel input  {
     width: 200px;
     font-family: 'Open Sans';
     font-size: 1.0em;
 }
-#container span {
+#container span, .add-new-panel span {
     padding: 3px;
     padding-left: 8px;
     display: inline-block;
@@ -91,12 +100,16 @@ header #add-new {
     padding: 5px 10px;
     font-weight: 500;
 }
-.update, #add-new {
+.update {
     color: white;
-    background: #00a4cf;
+    background: rgba(0, 164, 207, 1);
 }
-.update:hover, .cancel:hover {
-    border: solid 2px #444;
+.update:hover {
+    color: #fff;
+    background: rgba(0, 164, 207, 0.8);
+}
+.cancel:hover {
+    background: #DDD;
 }
     
 
@@ -109,4 +122,51 @@ header #add-new {
     #container .card-wrapper {
         width: 100%;
     }
+}
+
+
+
+/*****************************************/
+.add-new-panel {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    align-items: center;
+    /* justify-content: center; */
+    flex-direction: column;
+    font-size: 1.2em;
+    line-height: 1.4em;
+    color: #444;
+}
+.add-new-panel.active   {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: rgba(255, 255, 255, 1);
+    z-index: 200;
+    display: flex;
+}
+.add-new-panel > div {
+    max-width: 50vw;
+}
+.add-new-panel h2 {
+    margin-top: 60px;
+}
+.add-new-panel li {
+    margin-bottom: 20px;
+}
+
+.add-new-panel .close {
+    color: black;
+    position: absolute;
+    font-size: 2.5em;
+    border-width: 0px;
+    padding-bottom: 5px;
+    background: none;
+    top: 0vh;
+    line-height: 1em;
+    right: 0vh;
+}
+.add-new-panel .close:hover {
+    background: rgba(0, 0, 0, 0.4);
 }

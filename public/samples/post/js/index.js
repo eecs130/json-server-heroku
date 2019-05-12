@@ -1,5 +1,5 @@
 const postData = () => {
-    fetch('http://localhost:3000/posts', {
+    fetch('http://localhost:3000/berkeley', {
         method: 'post',
         headers: {
             'Accept': 'application/json',
