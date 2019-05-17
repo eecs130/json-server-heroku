@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: 'Open Sans', Helvetica, sans-serif;
-    background: rgba(0, 164, 207, 1);
+    background: #F0F0F0;
     color: #444;
 }
 body * {
@@ -54,11 +54,12 @@ header #add-new:hover {
     padding: 10px;
     margin: 40px 0px 0px 40px;
     width: 100%;
-    min-height: 200px;
-    background-color: #fafafa;
-    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
-    box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3),
-       0 17px 17px 0 rgba(0, 0, 0, 0.15);
+    min-height: 250px;
+    /* background-color: #fafafa; */
+    /* box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37); */
+    /* box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15); */
+    /* border: solid 1px #CCC; */
+    /* border-radius: 10px; */
 }
 #container .controls {
     margin-left: auto;
