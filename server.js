@@ -8,5 +8,5 @@ server.use(middlewares);
 server.use(router);
 
 server.listen(port, () => {
-    console.log(`API Helper App listening on port ${port}!`)
+    console.log(`Test Custom Data API listening on port ${port}!`)
 });

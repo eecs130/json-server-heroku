@@ -13,6 +13,27 @@
   "author": "Jesper Orb",
   "license": "ISC",
   "dependencies": {
-    "json-server": "^0.12.1"
+    "body-parser": "^1.18.2",
+    "chalk": "^2.3.0",
+    "compression": "^1.7.1",
+    "connect-pause": "^0.1.0",
+    "cors": "^2.8.4",
+    "errorhandler": "^1.2.0",
+    "express": "^4.16.2",
+    "express-urlrewrite": "^1.2.0",
+    "json-parse-helpfulerror": "^1.0.3",
+    "lodash": "^4.11.2",
+    "lodash-id": "^0.14.0",
+    "lowdb": "^0.15.0",
+    "method-override": "^2.3.10",
+    "morgan": "^1.9.0",
+    "nanoid": "^1.0.1",
+    "object-assign": "^4.0.1",
+    "please-upgrade-node": "^3.0.2",
+    "pluralize": "^7.0.0",
+    "request": "^2.83.0",
+    "server-destroy": "^1.0.1",
+    "update-notifier": "^2.3.0",
+    "yargs": "^10.0.3"
   }
 }

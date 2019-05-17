@@ -1,4 +1,4 @@
-const endpoint = 'http://localhost:3000/posts';
+const endpoint = 'http://localhost:3005/posts';
 const issueGetRequest = () => {
     // get data from the server:
     console.log('GET request:', endpoint);

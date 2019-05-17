@@ -1,5 +1,11 @@
 {
-  "posts": [],
+  "posts": [
+    {
+      "first_name": "dasda",
+      "last_name": "dasdasd",
+      "id": 1
+    }
+  ],
   "comments": [
     {
       "id": 0,
