@@ -198,6 +198,7 @@ module.exports = function (db, name, opts) {
   // GET /name/:id
   // GET /name/:id?_embed=&_expand
   function show(req, res, next) {
+    //console.log(req.params);
     var _embed = req.query._embed;
     var _expand = req.query._expand;
     var resource = db.get(name).getById(req.params.id).value();
