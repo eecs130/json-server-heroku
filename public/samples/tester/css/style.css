@@ -1,0 +1,92 @@
+body {
+    margin: 0;
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    background: #F0F0F0;
+    color: #444;
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 5vw 45vw 45vw 5vw;
+    grid-template-rows: 60px 70px auto;
+    grid-template-areas: 
+        "nav nav nav nav"
+        ". controls controls ."
+        ". code data .";
+}
+body * {
+    box-sizing: border-box;
+    /* border: solid 1px #000; */
+}
+header {
+    grid-area: nav;
+    position: fixed;
+    height: 60px;
+    width: 100vw;
+    background-image: -webkit-linear-gradient(top, #666, #111);
+    box-shadow: 6px 4px 8px 3px rgba(0, 0, 0, 0.25), 
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+h1, h2, h3 {
+    font-family: 'Roboto';
+}
+header h1 {
+    color: white;
+    margin: 0px;
+    line-height: 60px;
+    margin-left: 40px;
+    font-size: 1.3em;
+}
+
+.controls {
+    grid-area: controls;
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto 100px;
+    grid-column-gap: 10px;
+    align-items: center;
+    padding: 10px;
+}
+.code, .data {
+    padding: 10px;
+    display: grid;
+    grid-template-rows: 30px auto;
+    height: 100%;
+}
+.code {
+    grid-area: code;
+}
+.data {
+    grid-area: data;
+}
+.code h2, .data h2 {
+    margin-top: 6px;
+    margin-bottom: 0px;
+    font-size: 1.1em;
+    color: #777;
+    font-weight: 400;
+}
+
+.controls select {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 2px solid rgb(27, 150, 199);
+    font-size: 1.3em;
+}
+.controls button {
+    color: white;
+    background: rgba(0, 164, 207, 1);
+    font-size: 1.2em;
+    padding: 6px 20px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+main button:hover {
+    background: rgba(0, 164, 207, 0.8);
+}
+textarea  {
+    width: 100%;
+    padding: 10px;
+    height: 100%;
+    font-size: 1.1em;
+    color: #444;
+}
