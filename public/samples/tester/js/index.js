@@ -1,11 +1,22 @@
-let appData = null;
 const rootURL = document.location.protocol + '//' + document.location.host + '/';
 const menuElement = document.querySelector("#menu");
 const methodElement = document.querySelector("#method");
-const dataContainer = document.querySelector("#data-container");
-const codeContainer = document.querySelector("#code-container code");
-const codeHidden = document.querySelector("input.code");
+const codeContainer = document.querySelector("#code-container");
 const submitElement = document.querySelector("button");
+const dataViewer = CodeMirror(document.getElementById('data-display'), {
+    //lineNumbers: true,
+    mode: 'javascript',
+    value: ''
+});
+dataViewer.on("keydown", function(){
+    //console.log('changing!');
+    displayCode();
+});
+const codeViewer = CodeMirror(document.getElementById('code-container'), {
+    //lineNumbers: true,
+    mode: 'javascript',
+    readOnly: true
+});
 let successElement = document.querySelector(".alert");
 
 const initialize = () => {
@@ -15,8 +26,9 @@ const initialize = () => {
     submitElement.onclick = go;
     menuElement.onchange = handleEndpointChange;
     methodElement.onchange = handleMethodChange;
-    dataContainer.onkeydown = displayCode;
-    dataContainer.onkeyup = displayCode;
+    for (elem of document.querySelectorAll('input[type="radio"]')) {
+        elem.onclick = toggleHack;
+    }
 };
 
 const populateMethods = () => {
@@ -31,21 +43,19 @@ const populateMethods = () => {
             <option value="delete">DELETE</option>`;
     }
 };
-const setAppData = (data) => {
-    appData = data;
-};
 
-const buildEndpointsMenu = () => {
+const buildEndpointsMenu = (data) => {
     menuElement.innerHTML = '';
     const options = [];
-    for (endpoint in appData) {
-        const label = endpoint.charAt(0).toUpperCase() + endpoint.slice(1)
+    for (endpoint in data) {
+        const label = endpoint.charAt(0).toUpperCase() + endpoint.slice(1);
+        const baseEndpoint = rootURL + endpoint;
         options.push(`<optgroup label="${label}">`);
-        options.push(`<option endpoint-type="list" value="${rootURL}${endpoint}">${rootURL}${endpoint}</option>`);
-        for (item of appData[endpoint]) {
+        options.push(`<option endpoint-type="list" value="${baseEndpoint}">${baseEndpoint}</option>`);
+        for (item of data[endpoint]) {
             options.push(`
-                <option endpoint-type="detail" value="${rootURL}${endpoint}/${item.id}">
-                    ${rootURL}${endpoint}/${item.id}
+                <option endpoint-type="detail" value="${baseEndpoint}/${item.id}">
+                    ${baseEndpoint}/${item.id}
                 </option>`);
         }
         options.push(`</optgroup>`);
@@ -56,7 +66,6 @@ const buildEndpointsMenu = () => {
 const populateEndpoints = () => {
     fetch(rootURL + 'db')
         .then(response => response.json())
-        .then(setAppData)
         .then(buildEndpointsMenu)
         .then(populateMethods)
         .then(issueGetRequest);
@@ -75,33 +84,25 @@ const getMethod = () => {
 };
 
 const handleEndpointChange = () => {
-    // todo: needs to keep state of selected
-    const endpointType = getEndpointType();
-    
     // only re-populate if needed:
-    if (methodElement.innerHTML.indexOf('put') != -1 && endpointType === 'list') {
+    const endpointType = getEndpointType();
+    const detailToList = methodElement.innerHTML.indexOf('put') != -1 && endpointType === 'list';
+    const listToDetail = methodElement.innerHTML.indexOf('post') != -1 && endpointType === 'detail';
+    if (detailToList || listToDetail) {
         populateMethods();
     }
-    if (methodElement.innerHTML.indexOf('post') != -1 && endpointType === 'detail') {
-        populateMethods();
-    }
-    console.log(endpointType);
-    if (getMethod() === 'post') {
-        dataContainer.value = '{}';
-    } else {
-        // showMessage('Fetching data...');
-        issueGetRequest();
-    }
+    // only fetch if needed:
+    fetchIfNeeded();
 };
 
-const handleMethodChange = () => {
+const fetchIfNeeded = handleMethodChange = () => {
     const method = getMethod();
     if (method === 'post') {
-        dataContainer.value = '{}';
+        dataViewer.getDoc().setValue('{}');
+        displayCode();
     } else {
         issueGetRequest();
     }
-    displayCode();
 };
 
 const issueGetRequest = () => {
@@ -115,47 +116,8 @@ const issueGetRequest = () => {
 const displayData = (data) => {
     console.log(data)
     if (data) {
-        dataContainer.value = JSON.stringify(data, null, 4);
+        dataViewer.getDoc().setValue(JSON.stringify(data, null, 4));
     }
-};
-
-const generateGetCommand = () => {
-    return `fetch('${getEndpoint()}')
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-    });`
-};
-
-const generateCreateUpdateCommand = (method) => {
-    let formatJSON = dataContainer.value;
-    // format whitespace
-    if (formatJSON !== '{}') {
-        formatJSON = dataContainer.value.replace(/    /g, "            ");
-        formatJSON = formatJSON.replace('}', '        }');
-    }
-    return `fetch('${getEndpoint()}', {
-        method: '${method}',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(${formatJSON})
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-    });`;
-};
-
-const generateDeleteCommand = () => {
-    return `fetch('${getEndpoint()}', { 
-        method: 'delete' 
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-    });`
 };
 
 const showMessage = (message) => {
@@ -167,45 +129,52 @@ const showMessage = (message) => {
 };
 
 const showConfirmationMessage = () => {
-    const method = getMethod();
-    showMessage(`Your ${method} request was successfully executed.`);
+    showMessage(`Your ${getMethod().toUpperCase()} request was successfully executed.`);
+};
+
+const updateJSON = () => {
+    console.log('formatting...');
+    if (getMethod() === 'get') {
+        dataViewer.setOption('readOnly', true);
+    } else {
+        dataViewer.setOption('readOnly', false);
+    }
+};
+
+const toggleHack = () => {
+    displayCode();
+    // a hack when tabbing:
+    dataViewer.getDoc().setValue(dataViewer.getDoc().getValue());
 };
 
 const displayCode = () => {
-    const method = getMethod();
-    console.log(method)
-    if (method === 'get') {
-        codeContainer.innerHTML = codeHidden.value = generateGetCommand();
-    } else if (method === 'post') {
-        codeContainer.innerHTML = codeHidden.value = generateCreateUpdateCommand('post');
-    } else if (method === 'put') {
-        codeContainer.innerHTML = codeHidden.value = generateCreateUpdateCommand('put');
-    } else if (method === 'delete') {
-        codeContainer.innerHTML = codeHidden.value = generateDeleteCommand();
-    }
-    hljs.highlightBlock(codeContainer);
+
+    codeViewer.getDoc().setValue(getFetchCommand(
+        getMethod(), 
+        getEndpoint(), 
+        dataViewer.getDoc().getValue()
+    ));
+
 };
 
 const go = () => {
     const method = getMethod();
-    let code = codeHidden.value;
-    code = code.replace(/&gt;/g, '>');
-    code = code.replace(/&lt;/g, '<');
+    let code = codeViewer.getDoc().getValue();
+    code = code.replace(/&gt;/g, '>').replace(/&lt;/g, '<');
+    let extras = '';
+    if (['delete', 'post'].includes(method)) {
+        extras = 'populateEndpoints();';
+    }
+    // inject some additional callback functions:
     code = code.slice(0, code.lastIndexOf('});'));
     code += `
         displayData(data);
         displayCode(); 
-    `;
-    if (['delete', 'post'].includes(method)) {
-        code += `
-        populateEndpoints();
-        `;
-    } code += `
-    showConfirmationMessage();
-    `;
-    code += '});'
+        showConfirmationMessage();
+        ${extras}
+    });`;
     console.log(code);
     eval(code);
-}
+};
 
 initialize();

@@ -1,5 +1,11 @@
-.hljs {
-    background: transparent;
+pre {
+    margin-top: 0px;
+}
+.CodeMirror {
+    padding: 10px;
+    font-size: 1.1em;
+    height: auto;
+    border: solid 1px #CCC;
 }
 
 .controls select {
@@ -8,7 +14,6 @@
     background: transparent;
     border-bottom: 2px solid rgb(27, 150, 199);
     font-size: 1.3em;
-    /* background: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e) no-repeat right .75rem center/8px 10px; */
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -22,7 +27,6 @@
     color: #495057;
     vertical-align: middle;
     background:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right .75rem center/8px 10px;
-    /* ,url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e") #fff no-repeat center right 1.75rem/calc(.75em + .375rem) calc(.75em + .375rem); */
     background-color: #fff;
     border: 1px solid #ced4da;
     border-radius: .25rem;
@@ -53,13 +57,10 @@ button:hover {
 
 .alert {
     padding: .75rem 1.25rem;
-    margin-bottom: 1rem;
     border: 1px solid transparent;
     border-radius: .25rem;
     float: right;
     opacity: 0;
-    /* width: 100%; */
-    /* padding: 4px 15px; */
 }
 
 .alert-success {

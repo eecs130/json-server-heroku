@@ -1,12 +1,12 @@
 {
   "posts": [
     {
-      "first_name": "Sarah",
+      "first_name": "Sarah ",
       "last_name": "Van Wart",
       "id": 1
     },
     {
-      "first_name": "Lori C.",
+      "first_name": "Lori",
       "last_name": "McCain",
       "id": 2,
       "instrument": "fiddle and banjo"
@@ -17,22 +17,32 @@
       "id": 3
     },
     {
-      "first_name": "Maya and Kiera",
-      "last_name": "Herrarte",
-      "id": 6
+      "id": 4,
+      "first_name": "Sarah",
+      "city": "Evanston"
     },
     {
-      "first_name": "Lex",
-      "b": "5677",
       "id": 7
+    },
+    {
+      "id": 8
+    },
+    {
+      "id": 9
+    },
+    {
+      "id": 11
+    },
+    {
+      "id": 12
     }
   ],
   "comments": [
     {
       "id": 0,
-      "content": "Wow such content!",
+      "content": "Wow such content 1234!",
       "username": "zero_cool",
-      "post_id": 0
+      "post_id": 1
     }
   ]
 }

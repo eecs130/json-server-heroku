@@ -5,30 +5,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Roboto" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/color-brewer.min.css">
-        <link rel="stylesheet" href="css/tabs.css">
+        <link rel="stylesheet" href="https://codemirror.net/lib/codemirror.css">
         <link rel="stylesheet" href="css/controls.css">
         <link rel="stylesheet" href="css/layout.css">
     </head>
     <body>
-        <!-- Banner -->
+
+        <!-- 1. Banner -->
         <header>
-            <h1>REST Interaction Demo</h1>
+            <h1><img src="images/internet-white.png"> REST Interaction Demo</h1>
         </header>
         
-        <!-- Controls -->
+        <!-- 2. Controls -->
         <section class="controls">
+            <select id="menu"></select>
             <select id="method">
                 <option value="get">GET</option>
                 <option value="post">POST</option>
                 <option value="put">PUT</option>
                 <option value="delete">DELETE</option>
             </select>
-            <select id="menu"></select>
             <button id="submit">Send</button> 
         </section>
 
-        <!-- Output -->
+        <!-- 3. Output -->
         <section id="tab-area">
             <!-- Tabs -->
             <input id="tab1" type="radio" name="tabs" checked>
@@ -39,18 +39,16 @@
 
             <!-- Panels -->
             <section id="data">
-                <textarea id="data-container"></textarea>
+                <div id="data-display"></div>
             </section>
             <section id="code">
-                <div>
-                    <input type="hidden" class="code">
-                    <pre class="js" id="code-container"><code></code></pre>
-                </div>
+                <div id="code-container"></div>
             </section>
         </section>
         
-        <script lang="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
-        <script lang="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/javascript.min.js"></script>  
+        <script lang="text/javascript" src="https://codemirror.net/lib/codemirror.js"></script> 
+        <script lang="text/javascript" src="https://codemirror.net/mode/javascript/javascript.js"></script>  
+        <script type="text/javascript" src="js/commands.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>
 </html>
