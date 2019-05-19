@@ -77,13 +77,19 @@ const getMethod = () => {
 const handleEndpointChange = () => {
     // todo: needs to keep state of selected
     const endpointType = getEndpointType();
-    const method = getMethod();
-    populateMethods();
+    
+    // only re-populate if needed:
+    if (methodElement.innerHTML.indexOf('put') != -1 && endpointType === 'list') {
+        populateMethods();
+    }
+    if (methodElement.innerHTML.indexOf('post') != -1 && endpointType === 'detail') {
+        populateMethods();
+    }
     console.log(endpointType);
-    if (method === 'post') {
+    if (getMethod() === 'post') {
         dataContainer.value = '{}';
     } else {
-        showMessage('Fetching data...');
+        // showMessage('Fetching data...');
         issueGetRequest();
     }
 };
