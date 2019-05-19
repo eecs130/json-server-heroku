@@ -1,38 +1,29 @@
 {
   "posts": [
     {
-      "first_name": "dasda",
-      "last_name": "dasdasd",
+      "first_name": "Sarah",
+      "last_name": "Van Wart",
       "id": 1
     },
     {
-      "first_name": "jane",
-      "last_name": "doe",
-      "id": 2
+      "first_name": "Lori C.",
+      "last_name": "McCain",
+      "id": 2,
+      "instrument": "fiddle and banjo"
     },
     {
-      "first_name": "dasda",
-      "last_name": "dasda",
+      "first_name": "Walter",
+      "last_name": "Van Wart",
       "id": 3
     },
     {
-      "first_name": "dadsada",
-      "last_name": "dsadsad",
-      "id": 4
-    },
-    {
-      "first_name": "dasdasdd",
-      "last_name": "asdasd",
-      "id": 5
-    },
-    {
-      "first_name": "dasdasdd",
-      "last_name": "asdas",
+      "first_name": "Maya",
+      "last_name": "Herrarte",
       "id": 6
     },
     {
-      "first_name": "dasdad",
-      "last_name": "asdasd",
+      "first_name": "Lex",
+      "b": "5677",
       "id": 7
     }
   ],

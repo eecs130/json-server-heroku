@@ -1,0 +1,41 @@
+#tab-area section {
+    display: none;
+    padding: 20px 0 0;
+    /* border-top: 1px solid #abc; */
+    /* background: white; */
+}
+
+#tab1, #tab2 {
+    display: none;
+}
+
+#tab-area label {
+    display: inline-block;
+    margin: 0 0 -1px;
+    padding: 5px 5px;
+    font-weight: 600;
+    text-align: center;
+    color: #abc;
+    margin-right: 20px;
+    border: 1px solid transparent;
+}
+
+#tab-area label:hover {
+    color: #789;
+    cursor: pointer;
+    border-bottom: 3px solid #CCC;
+}
+
+#tab-area input:checked + label {
+    color: #444;
+    /* border: 1px solid #abc; */
+    border-bottom: 3px solid #007bff;
+    /* border-bottom: 1px solid #F0F0F0; */
+    /* background: white; */
+}
+
+#tab1:checked ~ #data,
+#tab2:checked ~ #code
+{
+    display: block;
+}
