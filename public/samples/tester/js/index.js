@@ -148,12 +148,12 @@ const toggleHack = () => {
 };
 
 const displayCode = () => {
-
     codeViewer.getDoc().setValue(getFetchCommand(
         getMethod(), 
         getEndpoint(), 
         dataViewer.getDoc().getValue()
     ));
+    updateJSON();
 
 };
 
