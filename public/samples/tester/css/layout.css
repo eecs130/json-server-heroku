@@ -69,7 +69,7 @@ header h1 img {
     /* background: white; */
 }
 
-#tab1, #tab2 {
+#tab1, #tab2, #tab3 {
     display: none;
 }
 
@@ -99,7 +99,8 @@ header h1 img {
 }
 
 #tab1:checked ~ #data,
-#tab2:checked ~ #code {
+#tab2:checked ~ #javascript,
+#tab3:checked ~ #python {
     display: block;
     height: auto;
     height: calc(100vh - 225px);

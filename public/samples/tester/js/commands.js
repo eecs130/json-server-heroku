@@ -1,18 +1,19 @@
-const _generateGetCommand = (endpoint) => {
-    return `fetch('${endpoint}')
+const js = {
+    generateGetCommand: (endpoint) => {
+        return `fetch('${endpoint}')
     .then(response => response.json())
     .then(data => {
         console.log(data);
     });`
-};
-const _generateCreateUpdateCommand = (endpoint, method, editedData) => {
-    let formattedJSON = editedData;
-    // format whitespace
-    if (formattedJSON !== '{}') {
-        formattedJSON = formattedJSON.replace(/    /g, "            ");
-        formattedJSON = formattedJSON.replace('}', '        }');
-    }
-    return `fetch('${endpoint}', {
+    },
+    generateCreateUpdateCommand: (endpoint, method, editedData) => {
+        let formattedJSON = editedData;
+        // format whitespace
+        if (formattedJSON !== '{}') {
+            formattedJSON = formattedJSON.replace(/    /g, "            ");
+            formattedJSON = formattedJSON.replace('}', '        }');
+        }
+        return `fetch('${endpoint}', {
         method: '${method}',
         headers: {
             'Accept': 'application/json',
@@ -24,9 +25,8 @@ const _generateCreateUpdateCommand = (endpoint, method, editedData) => {
     .then(data => {
         console.log(data);
     });`;
-};
-
-const _generateDeleteCommand = (endpoint) => {
+    }, 
+    generateDeleteCommand: (endpoint) => {
     return `fetch('${endpoint}', { 
         method: 'delete' 
     })
@@ -34,14 +34,45 @@ const _generateDeleteCommand = (endpoint) => {
     .then(data => {
         console.log(data);
     });`
+    }
 };
 
-getFetchCommand = (method, endpoint, jsonText) => {
+
+
+getJavaScriptCommand = (method, endpoint, jsonText) => {
     if (method === 'get') {
-        return _generateGetCommand(endpoint);
+        return js.generateGetCommand(endpoint);
     } else if (method === 'delete') {
-        return _generateDeleteCommand(endpoint);
+        return js.generateDeleteCommand(endpoint);
     } else {
-        return _generateCreateUpdateCommand(endpoint, method, jsonText);
+        return js.generateCreateUpdateCommand(endpoint, method, jsonText);
+    }
+};
+
+const python = {
+    generateGetCommand: (endpoint) => {
+        return `import requests
+response = requests.get("${endpoint}")
+print(response.json())`;
+    },
+    generateCreateUpdateCommand: (endpoint, method, editedData) => {
+        return `import requests
+response = requests.${method}("${endpoint}", data=${editedData})
+print(response.json())`;
+    },
+    generateDeleteCommand: (endpoint) => {
+        return `import requests
+response = requests.delete("${endpoint}")
+print(response.json())`;
+    }
+};
+
+getPythonCommand = (method, endpoint, jsonText) => {
+    if (method === 'get') {
+        return python.generateGetCommand(endpoint);
+    } else if (method === 'delete') {
+        return python.generateDeleteCommand(endpoint);
+    } else {
+        return python.generateCreateUpdateCommand(endpoint, method, jsonText);
     }
 };

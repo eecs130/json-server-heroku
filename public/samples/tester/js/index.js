@@ -3,20 +3,23 @@ const menuElement = document.querySelector("#menu");
 const methodElement = document.querySelector("#method");
 const codeContainer = document.querySelector("#code-container");
 const submitElement = document.querySelector("button");
-const dataViewer = CodeMirror(document.getElementById('data-display'), {
-    //lineNumbers: true,
+const jsonViewer = CodeMirror(document.getElementById('data-container'), {
     mode: 'javascript',
     value: ''
 });
-dataViewer.on("keydown", function(){
+jsonViewer.on("keydown", function(){
     //console.log('changing!');
     displayCode();
 });
-const codeViewer = CodeMirror(document.getElementById('code-container'), {
-    //lineNumbers: true,
+const javascriptViewer = CodeMirror(document.getElementById('javascript-container'), {
     mode: 'javascript',
     readOnly: true
 });
+const pythonViewer = CodeMirror(document.getElementById('python-container'), {
+    mode: 'python',
+    readOnly: true
+});
+
 let successElement = document.querySelector(".alert");
 
 const initialize = () => {
@@ -98,7 +101,7 @@ const handleEndpointChange = () => {
 const fetchIfNeeded = handleMethodChange = () => {
     const method = getMethod();
     if (method === 'post') {
-        dataViewer.getDoc().setValue('{}');
+        jsonViewer.getDoc().setValue('{}');
         displayCode();
     } else {
         issueGetRequest();
@@ -116,7 +119,7 @@ const issueGetRequest = () => {
 const displayData = (data) => {
     console.log(data)
     if (data) {
-        dataViewer.getDoc().setValue(JSON.stringify(data, null, 4));
+        jsonViewer.getDoc().setValue(JSON.stringify(data, null, 4));
     }
 };
 
@@ -135,23 +138,28 @@ const showConfirmationMessage = () => {
 const updateJSON = () => {
     console.log('formatting...');
     if (getMethod() === 'get') {
-        dataViewer.setOption('readOnly', true);
+        jsonViewer.setOption('readOnly', true);
     } else {
-        dataViewer.setOption('readOnly', false);
+        jsonViewer.setOption('readOnly', false);
     }
 };
 
 const toggleHack = () => {
     displayCode();
     // a hack when tabbing:
-    dataViewer.getDoc().setValue(dataViewer.getDoc().getValue());
+    jsonViewer.getDoc().setValue(jsonViewer.getDoc().getValue());
 };
 
 const displayCode = () => {
-    codeViewer.getDoc().setValue(getFetchCommand(
+    javascriptViewer.getDoc().setValue(getJavaScriptCommand(
         getMethod(), 
         getEndpoint(), 
-        dataViewer.getDoc().getValue()
+        jsonViewer.getDoc().getValue()
+    ));
+    pythonViewer.getDoc().setValue(getPythonCommand(
+        getMethod(), 
+        getEndpoint(), 
+        jsonViewer.getDoc().getValue()
     ));
     updateJSON();
 
@@ -159,7 +167,7 @@ const displayCode = () => {
 
 const go = () => {
     const method = getMethod();
-    let code = codeViewer.getDoc().getValue();
+    let code = javascriptViewer.getDoc().getValue();
     code = code.replace(/&gt;/g, '>').replace(/&lt;/g, '<');
     let extras = '';
     if (['delete', 'post'].includes(method)) {
@@ -174,7 +182,11 @@ const go = () => {
         ${extras}
     });`;
     console.log(code);
-    eval(code);
+    try {
+        eval(code);
+    } catch(e) {
+        console.log(e);
+    }
 };
 
 initialize();

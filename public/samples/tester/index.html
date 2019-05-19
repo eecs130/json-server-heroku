@@ -13,7 +13,7 @@
 
         <!-- 1. Banner -->
         <header>
-            <h1><img src="images/internet-white.png"> REST Interaction Demo</h1>
+            <h1><img src="images/internet-white.png"> REST Testing Framework</h1>
         </header>
         
         <!-- 2. Controls -->
@@ -35,19 +35,25 @@
             <label for="tab1">Data</label>
             <input id="tab2" type="radio" name="tabs">
             <label for="tab2">JavaScript</label>
+            <input id="tab3" type="radio" name="tabs">
+            <label for="tab3">Python</label>
             <div class="alert" role="alert"></div>
 
             <!-- Panels -->
             <section id="data">
-                <div id="data-display"></div>
+                <div id="data-container"></div>
             </section>
-            <section id="code">
-                <div id="code-container"></div>
+            <section id="javascript">
+                <div id="javascript-container"></div>
+            </section>
+            <section id="python">
+                <div id="python-container"></div>
             </section>
         </section>
         
         <script lang="text/javascript" src="https://codemirror.net/lib/codemirror.js"></script> 
         <script lang="text/javascript" src="https://codemirror.net/mode/javascript/javascript.js"></script>  
+        <script lang="text/javascript" src="https://codemirror.net/mode/python/python.js"></script>  
         <script type="text/javascript" src="js/commands.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>
