@@ -1,0 +1,99 @@
+pre {
+    margin-top: 0px;
+}
+.CodeMirror {
+    padding: 10px;
+    font-size: 1.1em;
+    height: auto;
+    border: solid 1px #CCC;
+}
+
+.controls select {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 2px solid rgb(27, 150, 199);
+    font-size: 1.3em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem 1.75rem .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    vertical-align: middle;
+    background:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right .75rem center/8px 10px;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+button {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.button-primary:hover {
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.button-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.alert {
+    padding: .75rem 1.25rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    float: right;
+    opacity: 0;
+
+    animation:server-response 3.5s 1;
+    -webkit-animation:server-response 3.5s 1;
+    animation-fill-mode: forwards;
+
+    animation-delay:2s;
+    -webkit-animation-delay:1s; /* Safari and Chrome */
+    -webkit-animation-fill-mode: forwards;
+}
+
+.alert-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    opacity: 1;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    opacity: 1;
+}
+
+@keyframes server-response{
+    from {opacity :1;}
+    to {opacity :0;}
+}
+
+@-webkit-keyframes server-response{
+    from {opacity :1;}
+    to {opacity :0;}
+}
