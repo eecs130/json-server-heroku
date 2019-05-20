@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "casual": "^1.6.0",
     "chalk": "^2.3.0",
     "compression": "^1.7.1",
     "connect-pause": "^0.1.0",

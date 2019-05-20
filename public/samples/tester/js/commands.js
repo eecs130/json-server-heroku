@@ -14,7 +14,7 @@ const js = {
             formattedJSON = formattedJSON.replace('}', '        }');
         }
         return `fetch('${endpoint}', {
-        method: '${method}',
+        method: '${method.toUpperCase()}',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -28,7 +28,7 @@ const js = {
     }, 
     generateDeleteCommand: (endpoint) => {
     return `fetch('${endpoint}', { 
-        method: 'delete' 
+        method: 'DELETE' 
     })
     .then(response => response.json())
     .then(data => {

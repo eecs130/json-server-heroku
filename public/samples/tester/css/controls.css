@@ -61,13 +61,6 @@ button:hover {
     border-radius: .25rem;
     float: right;
     opacity: 0;
-}
-
-.alert-success {
-    color: #155724;
-    background-color: #d4edda;
-    border-color: #c3e6cb;
-    opacity: 1;
 
     animation:server-response 3.5s 1;
     -webkit-animation:server-response 3.5s 1;
@@ -76,6 +69,20 @@ button:hover {
     animation-delay:2s;
     -webkit-animation-delay:1s; /* Safari and Chrome */
     -webkit-animation-fill-mode: forwards;
+}
+
+.alert-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    opacity: 1;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    opacity: 1;
 }
 
 @keyframes server-response{

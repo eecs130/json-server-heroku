@@ -3,24 +3,27 @@ const menuElement = document.querySelector("#menu");
 const methodElement = document.querySelector("#method");
 const codeContainer = document.querySelector("#code-container");
 const submitElement = document.querySelector("button");
+let alertElement = document.querySelector(".alert");
+
 const jsonViewer = CodeMirror(document.getElementById('data-container'), {
-    mode: 'javascript',
-    value: ''
+    mode: 'javascript'
 });
-jsonViewer.on("keydown", function(){
+jsonViewer.on("keydown", () => {
+    //console.log('changing!');
+    displayCode();
+});
+jsonViewer.on("keyup", () => {
     //console.log('changing!');
     displayCode();
 });
 const javascriptViewer = CodeMirror(document.getElementById('javascript-container'), {
     mode: 'javascript',
-    readOnly: true
+    readOnly: 'nocursor'
 });
 const pythonViewer = CodeMirror(document.getElementById('python-container'), {
     mode: 'python',
-    readOnly: true
+    readOnly: 'nocursor'
 });
-
-let successElement = document.querySelector(".alert");
 
 const initialize = () => {
     populateEndpoints();
@@ -43,6 +46,7 @@ const populateMethods = () => {
         methodElement.innerHTML = `
             <option value="get">GET</option>
             <option value="put">PUT</option>
+            <option value="patch">PATCH</option>
             <option value="delete">DELETE</option>`;
     }
 };
@@ -123,12 +127,17 @@ const displayData = (data) => {
     }
 };
 
-const showMessage = (message) => {
-    successElement.innerHTML = message;
-    successElement.classList.add('alert-success');
-    var newone = successElement.cloneNode(true);
-    successElement.parentNode.replaceChild(newone, successElement);
-    successElement = newone;
+const showMessage = (message, isError=false) => {
+    alertElement.innerHTML = message;
+    alertElement.classList.remove('alert-error', 'alert-success');
+    if (isError) {
+        alertElement.classList.add('alert-error');
+    } else {
+        alertElement.classList.add('alert-success');
+    }
+    var newMessageElement = alertElement.cloneNode(true);
+    alertElement.parentNode.replaceChild(newMessageElement, alertElement);
+    alertElement = newMessageElement;
 };
 
 const showConfirmationMessage = () => {
@@ -165,9 +174,24 @@ const displayCode = () => {
 
 };
 
+const validateJSON = () => {
+    try {
+        JSON.parse(jsonViewer.getDoc().getValue());
+        return true;
+    } catch (e) {
+        console.error(e);
+        return false;
+    } 
+};
+
 const go = () => {
+    if (!validateJSON()) {
+        showMessage(`Your JSON data is not correctly formatted. Please review it`, isError=true);
+        return;
+    }
     const method = getMethod();
     let code = javascriptViewer.getDoc().getValue();
+    if (!validateJSON(code))
     code = code.replace(/&gt;/g, '>').replace(/&lt;/g, '<');
     let extras = '';
     if (['delete', 'post'].includes(method)) {

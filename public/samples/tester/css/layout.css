@@ -1,13 +1,15 @@
 body {
     margin: 0;
-    font-family: 'Open Sans', Helvetica, sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    /* font-family: 'Open Sans', Helvetica, sans-serif; */
     background: #F8F8F8;
+    /* background: #fff; */
     color: #444;
     display: grid;
     height: 100vh;
     max-height: 100vh;
     grid-template-columns: 15vw 70vw 15vw;
-    grid-template-rows: 60px 70px auto;
+    grid-template-rows: 100px 70px auto;
     grid-template-areas: 
         "nav nav nav"
         ". controls ."
@@ -17,32 +19,13 @@ body * {
     box-sizing: border-box;
 }
 header {
-    z-index: 100;
-    grid-area: nav;
-    position: fixed;
-    height: 60px;
+    padding-top: 1.0rem;
+    border-bottom: 1px solid #EEE;
     width: 100vw;
-    background-image: -webkit-linear-gradient(top, #666, #111);
-    box-shadow: 6px 4px 8px 3px rgba(0, 0, 0, 0.25), 
-        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    grid-area: nav;
+    z-index: 100;
+    padding-left: calc(15vw + 10px);
 }
-h1, h2, h3 {
-    font-family: 'Roboto';
-}
-header h1 {
-    color: white;
-    margin: 0px;
-    line-height: 60px;
-    margin-left: 40px;
-    font-size: 1.3em;
-}
-header h1 img {
-    vertical-align: middle;
-    width: 40px;
-}
-/* header, .controls, #tab-area {
-    border: solid 1px #000;
-} */
 
 .controls {
     grid-area: controls;
@@ -64,13 +47,20 @@ header h1 img {
 
 #tab-area section {
     display: none;
-    padding: 20px 0 0;
+    padding: 0px;
     /* border-top: 1px solid #abc; */
     /* background: white; */
 }
 
 #tab1, #tab2, #tab3 {
     display: none;
+}
+#tab-area p {
+    font-size: 0.9em;
+}
+#tab-area p em {
+    font-weight: 600;
+    font-style: normal;
 }
 
 #tab-area label {
@@ -79,13 +69,13 @@ header h1 img {
     padding: 5px 5px;
     font-weight: 600;
     text-align: center;
-    color: #abc;
+    color: #555;
     margin-right: 20px;
     border: 1px solid transparent;
 }
 
 #tab-area label:hover {
-    color: #789;
+    color: #555;
     cursor: pointer;
     border-bottom: 3px solid #CCC;
 }
@@ -103,5 +93,14 @@ header h1 img {
 #tab3:checked ~ #python {
     display: block;
     height: auto;
-    height: calc(100vh - 225px);
+    height: calc(100vh - 300px);
+}
+
+#data, #javascript, #python {
+    margin-top: 20px;
+}
+
+#javascript .CodeMirror, #python .CodeMirror {
+    border: none;
+    background: transparent;
 }

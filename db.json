@@ -1,34 +1,13 @@
 {
   "posts": [
     {
-      "first_name": "Sarah ",
+      "first_name": "Sarah1",
       "last_name": "Van Wart",
       "id": 1
     },
     {
-      "first_name": "Lori C.",
-      "last_name": "McCain",
-      "id": 2,
-      "instrument": "fiddle and guitar"
-    },
-    {
-      "first_name": "Walter 123",
-      "last_name": "Van Wart",
-      "id": 3
-    },
-    {
-      "id": 7
-    },
-    {
-      "id": 9
-    },
-    {
-      "id": 11,
-      "name": "Scout",
-      "age": "18"
-    },
-    {
-      "id": 12
+      "name": "Christy",
+      "id": 2
     }
   ],
   "comments": [
@@ -37,6 +16,78 @@
       "content": "Wow such content 1234!",
       "username": "zero_cool",
       "post_id": 1
+    }
+  ],
+  "books": [
+    {
+      "id": 1,
+      "title": "vitae id",
+      "author": "Grady Pollich",
+      "rating": 4.5,
+      "year_published": 1978
+    },
+    {
+      "id": 2,
+      "title": "This is a test",
+      "author": "Christopher Pollich",
+      "rating": 4.75,
+      "year_published": 1716
+    },
+    {
+      "id": 3,
+      "title": "omnis consequatur",
+      "author": "Cydney Rau",
+      "rating": 4,
+      "year_published": 1841
+    },
+    {
+      "id": 4,
+      "title": "Nonsense Titl",
+      "author": "Destany Miller",
+      "rating": 3.55,
+      "year_published": 2015
+    },
+    {
+      "id": 5,
+      "title": "quisquam qui minus laudantium",
+      "author": "Rose Beahan",
+      "rating": 3,
+      "year_published": 1954
+    },
+    {
+      "id": 6,
+      "title": "consectetur accusantium quia",
+      "author": "Savanah Miller",
+      "rating": 1.8,
+      "year_published": 1798
+    },
+    {
+      "id": 7,
+      "title": "ducimus autem quaerat",
+      "author": "Cleta Schuppe",
+      "rating": 3.15,
+      "year_published": 1826
+    },
+    {
+      "id": 8,
+      "title": "voluptatem natus rerum",
+      "author": "Josefa Gusikowski",
+      "rating": 1.9,
+      "year_published": 1722
+    },
+    {
+      "id": 9,
+      "title": "consectetur",
+      "author": "Lonnie Olson",
+      "rating": 0.65,
+      "year_published": 1892
+    },
+    {
+      "id": 10,
+      "title": "dolor vel voluptatibus aut aliquid voluptatem",
+      "author": "Lori Beahan",
+      "rating": 4.05,
+      "year_published": 1869
     }
   ]
 }
