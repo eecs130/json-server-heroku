@@ -19,11 +19,11 @@ jsonViewer.on("keyup", () => {
 });
 const javascriptViewer = CodeMirror(document.getElementById('javascript-container'), {
     mode: 'javascript',
-    readOnly: 'nocursor'
+    readOnly: true
 });
 const pythonViewer = CodeMirror(document.getElementById('python-container'), {
     mode: 'python',
-    readOnly: 'nocursor'
+    readOnly: true
 });
 
 const initialize = () => {
