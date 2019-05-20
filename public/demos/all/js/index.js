@@ -1,4 +1,4 @@
-const endpoint = '../../posts';
+const endpoint = '../../users';
 const issueGetRequest = () => {
     // get data from the server:
     console.log('GET request:', endpoint);
@@ -49,8 +49,10 @@ const handleUpdate = (ev) => {
     const id = ev.target.getAttribute('data-id');
     const container = ev.target.parentElement.parentElement;
     const data = {
-        'first_name': container.querySelector('#first_name').value,
-        'last_name': container.querySelector('#last_name').value
+        'firstname': container.querySelector('#firstname').value,
+        'lastname': container.querySelector('#lastname').value,
+        'email': container.querySelector('#email').value,
+        'avatar': container.querySelector('#avatar').value
     };
     const callback = (item) => {
         container.innerHTML = getItemHTML(item);
@@ -62,8 +64,10 @@ const handleUpdate = (ev) => {
 const handleCreate = () => {
     const container = document.querySelector('.add-new-panel');
     data = {
-        'first_name': container.querySelector('.first_name').value,
-        'last_name': container.querySelector('.last_name').value
+        'firstname': container.querySelector('.firstname').value,
+        'lastname': container.querySelector('.lastname').value,
+        'email': container.querySelector('.email').value,
+        'avatar': container.querySelector('.avatar').value
     }
     issuePostRequest(data, issueGetRequest);
     document.querySelector('.add-new-panel').classList.remove('active');
@@ -87,8 +91,8 @@ const attachEventHandlers = () => {
     }
     document.querySelector('#add-new').onclick = () => {
         const container = document.querySelector('.add-new-panel');
-        container.querySelector('.first_name').value = '';
-        container.querySelector('.last_name').value = '';
+        container.querySelector('.firstname').value = '';
+        container.querySelector('.firstname').value = '';
         container.classList.add('active');
     };
     document.querySelector('.close').onclick = () => {
@@ -126,11 +130,17 @@ const displayForm = (item, container) => {
     container.innerHTML = `
         <div style="margin-top:7px;">
             <label>id:</label><span>${item.id}</span><br>
-            <label>first_name:</label>
-            <input type="text" id="first_name" value="${item.first_name}"><br>
+            <label>firstname:</label>
+            <input type="text" id="firstname" value="${item.firstname}"><br>
             
-            <label>last_name:</label>
-            <input type="text" id="last_name" value="${item.last_name}"><br>
+            <label>lastname:</label>
+            <input type="text" id="lastname" value="${item.lastname}"><br>
+            
+            <label>email:</label>
+            <input type="text" id="email" value="${item.email}"><br>
+            
+            <label>avatar:</label>
+            <input type="text" id="avatar" value="${item.avatar}"><br>
             
             <label></label>
             <button type="button" data-id="${item.id}" class="update">Update</button>
@@ -146,8 +156,10 @@ const getItemHTML = (item) => {
             <i class="fas fa-trash delete" id="${item.id}"></i>
         </div>
         <label>id:</label><span>${item.id}</span><br>
-        <label>first_name:</label><span>${item.first_name}</span><br>
-        <label>last_name:</label><span>${item.last_name}</span>
+        <label>firstname:</label><span>${item.firstname}</span><br>
+        <label>lastname:</label><span>${item.lastname}</span><br>
+        <label>email:</label><span>${item.email}</span><br>
+        <label>avatar:</label><img src="${item.avatar}" />
     </div>`;
 };
 
@@ -159,6 +171,7 @@ const displayItem = (item, container) => {
 };
 
 const displayData = (data) => {
+    console.log(data)
     const container = document.querySelector("#container");
     container.innerHTML = "";
     for (item of data) {
