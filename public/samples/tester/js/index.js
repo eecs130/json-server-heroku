@@ -6,7 +6,8 @@ const submitElement = document.querySelector("button");
 let alertElement = document.querySelector(".alert");
 
 const jsonViewer = CodeMirror(document.getElementById('data-container'), {
-    mode: 'javascript'
+    mode: 'javascript',
+    lineWrapping: true
 });
 jsonViewer.on("keydown", () => {
     //console.log('changing!');
