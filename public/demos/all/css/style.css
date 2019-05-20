@@ -18,6 +18,11 @@ header {
 h1, h2 {
     font-family: 'Roboto';
 }
+img {
+    width: 140px;
+    padding: 3px;
+    border: solid 1px #CCC;
+}
 header h1 {
     color: white;
     margin: 0px;
@@ -27,14 +32,8 @@ header h1 {
 }
 header #add-new {
     float: right;
-    margin-top: -46px;
+    margin-top: -48px;
     margin-right: 40px;
-    cursor: pointer;
-    color: white;
-    background: rgba(0, 164, 207, 1);
-}
-header #add-new:hover {
-    background: rgba(0, 164, 207, 0.8);
 }
 
 #container {
@@ -55,12 +54,7 @@ header #add-new:hover {
     padding: 10px;
     margin: 40px 0px 0px 40px;
     width: 100%;
-    min-height: 250px;
-    /* background-color: #fafafa; */
-    /* box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37); */
-    /* box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15); */
-    /* border: solid 1px #CCC; */
-    /* border-radius: 10px; */
+    min-height: 280px;
 }
 #container .controls {
     margin-left: auto;
@@ -94,7 +88,7 @@ header #add-new:hover {
     display: inline-block;
     font-weight: 500;
 }
-.update, .cancel, #add-new {
+/* .update, .cancel, #add-new {
     font-size: 1em;
     background: none;
     border: solid 2px transparent;
@@ -112,7 +106,7 @@ header #add-new:hover {
 }
 .cancel:hover {
     background: #DDD;
-}
+} */
     
 
 @media (max-width: 900px) {

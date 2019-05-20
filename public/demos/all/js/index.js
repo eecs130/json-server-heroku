@@ -143,7 +143,7 @@ const displayForm = (item, container) => {
             <input type="text" id="avatar" value="${item.avatar}"><br>
             
             <label></label>
-            <button type="button" data-id="${item.id}" class="update">Update</button>
+            <button type="button" data-id="${item.id}" class="update button-primary">Update</button>
             <button type="button" class="cancel">Cancel</button>
         </div>
     `;
